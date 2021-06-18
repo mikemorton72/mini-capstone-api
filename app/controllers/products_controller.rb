@@ -22,16 +22,23 @@ class ProductsController < ApplicationController
   end
 
   def update
-    # render json: {output: "hello"}
     product_id = params[:id]
     product = Product.find_by(id: product_id)
-    product.update(
+    product && product.update(
     name: params[:input_name], 
     price: params[:input_price], 
     image_url: params[:input_image_url], 
     description: params[:input_description]
   )
     # product.save # not needed when update method is used.
-    render json: params.as_json
+    render json: product.as_json
   end
+
+  def destroy
+    product_id = params[:id]
+    product = Product.find_by(id: product_id)
+    render json: product.as_json
+    product && product.destroy
+  end
+
 end
