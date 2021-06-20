@@ -12,10 +12,10 @@ class ProductsController < ApplicationController
   
   def create
     product = Product.new(
-      name: params[:input_name], 
-      price: params[:input_price], 
-      image_url: params[:input_image_url], 
-      description: params[:input_description]
+      name: params[:name], 
+      price: params[:price], 
+      image_url: params[:image_url], 
+      description: params[:description]
     )
     product.save
     render json: product.as_json
@@ -25,10 +25,10 @@ class ProductsController < ApplicationController
     product_id = params[:id]
     product = Product.find_by(id: product_id)
     product && product.update(
-    name: params[:input_name], 
-    price: params[:input_price], 
-    image_url: params[:input_image_url], 
-    description: params[:input_description]
+    name: params[:name] || product.name, 
+    price: params[:price] || product.price, 
+    image_url: params[:image_url] || product.image_url, 
+    description: params[:description] || product.description
   )
     # product.save # not needed when update method is used.
     render json: product.as_json
@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
     product_id = params[:id]
     product = Product.find_by(id: product_id)
     render json: product.as_json
-    product && product.destroy
+    product.destroy
   end
 
 end

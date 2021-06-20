@@ -10,7 +10,7 @@
   product = Product.new(
     name: Faker::Commerce.product_name, 
     price: Faker::Commerce.price.to_i, 
-    image_url: Faker::LoremFlickr.image, 
+    image_url: Faker::Placeholdit.image, 
     description: Faker::Marketing.buzzwords)
   product.save
   # product = Product.last
