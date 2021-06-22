@@ -19,7 +19,6 @@ gem 'puma', '~> 5.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'rack-cors'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -39,3 +38,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'active_model_serializers', '~> 0.10.0'
