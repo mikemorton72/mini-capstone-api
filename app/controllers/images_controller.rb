@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   def create
-    image = Image.create(url: params[:url], product_id: params[:product_id])
+    image = Image.new(url: params[:url], product_id: params[:product_id])
     image.save
     render json: image.as_json
   end

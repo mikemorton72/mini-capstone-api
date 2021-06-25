@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
       amount_in_inventory: params[:amount_in_inventory],
       supplier_id: params[:supplier_id])
     if product.save
+      image = Image.new(url: params[:image_url], product_id: product.id)
+      image.save
       render json: product
     else
       render json: {errors: product.errors.full_messages},status: :unprocessable_entity
