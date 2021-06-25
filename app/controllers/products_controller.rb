@@ -13,10 +13,10 @@ class ProductsController < ApplicationController
   def create
     product = Product.new(
       name: params[:name], 
-      price: params[:price], 
-      image_url: params[:image_url], 
+      price: params[:price],
       description: params[:description],
-      amount_in_inventory: params[:amount_in_inventory])
+      amount_in_inventory: params[:amount_in_inventory],
+      supplier_id: params[:supplier_id])
     if product.save
       render json: product
     else
@@ -29,9 +29,9 @@ class ProductsController < ApplicationController
     product = Product.find_by(id: product_id)
     product.name = params[:name] || product.name
     product.price = params[:price] || product.price
-    product.image_url = params[:image_url] || product.image_url
     product.description = params[:description] || product.description
-    product.amount_in_inventory = params[:amount_in_inventory] || product.description
+    product.amount_in_inventory = params[:amount_in_inventory] || product.amount_in_inventory
+    product.supplier_id = params[:supplier_id] || product.supplier_id
     if product.save
       render json: product
     else
