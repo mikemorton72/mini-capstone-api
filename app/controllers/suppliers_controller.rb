@@ -5,13 +5,13 @@ class SuppliersController < ApplicationController
       email: params[:email],
       phone_number: params[:phone_number])
     supplier.save
-    render json: supplier.as_json
+    render json: supplier
   end
   def index
-    render json: Supplier.all.as_json
+    render json: Supplier.all
   end
 
   def show
-    render json: Supplier.find_by(id: params[:id]).as_json
+    render json: Supplier.find_by(id: params[:id])
   end
 end
