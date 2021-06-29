@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
       products = Product.all
       render json: products
     else
-      render json: {}
+      render json: {message: "Please log in."}
     end
   end
 
@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
       product = Product.find_by(id: product_id)
       render json: product
     else
-      render json: {}
+      render json: {message: "Please log in."}
     end
   end
   
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
         render json: {errors: product.errors.full_messages},status: :unprocessable_entity
       end
     else
-      render json: {}
+      render json: {message: "Please log in."}
     end
   end
 
@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
         render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
       end
     else
-      render json: {}
+      render json: {message: "Please log in."}
     end
   end
 
@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
       render json: product
       product.destroy
     else
-      render json: {}
+      render json: {message: "Please log in."}
     end
   end
 

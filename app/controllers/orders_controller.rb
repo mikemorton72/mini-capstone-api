@@ -25,15 +25,28 @@ class OrdersController < ApplicationController
         render json: order.errors.full_messages
       end
     else
-      render json: {}
+      render json: {message: "Please log in."}
     end
   end
 
   def show
-    render json: Order.find_by(id: params[:id])
+    if current_user
+      order = Order.find_by(id: params[:id])
+      if order.user_id == current_user.id
+        render json: order
+      else
+        render json: {message: "User order not found"}
+      end
+    else
+      render json: {message: "Please log in."}
+    end
   end
 
   def index
-    render json: Order.all
+    if current_user
+      render json: Order.where(user_id: current_user.id)
+    else
+      render json: {message: "Please log in."}
+    end
   end
 end
