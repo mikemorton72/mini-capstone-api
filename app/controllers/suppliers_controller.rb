@@ -1,4 +1,5 @@
 class SuppliersController < ApplicationController
+  before_action :authenticate_admin only: [:create]
   def create
     supplier = Supplier.new(
       name: params[:name],
