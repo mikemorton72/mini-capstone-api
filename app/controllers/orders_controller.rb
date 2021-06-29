@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
       product = Product.find_by(id: params[:product_id])
       if product
         subtotal = product.price * params[:quantity].to_i
-        tax =  subtotal * 0.09 # Assuming tax rate of 9%
+        tax =  product.tax * params[:quantity].to_i
         total = subtotal + tax
       end
       # Create and save order
